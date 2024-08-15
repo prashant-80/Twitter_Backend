@@ -3,12 +3,15 @@ const { ServerConfig } = require('./config');
 const apiRoutes = require('./routes');
 const {DbConfig} = require('./config')
 const app = express();
-const {TweetRepository} = require('./repositories')
-const tweetRepository = new TweetRepository
+const passport = require('passport');
+const { passportAuth } = require('./middlewares/jwt-middleware');
 
-
+//middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));  
+
+app.use(passport.initialize());
+passportAuth(passport);
 
 app.use('/api', apiRoutes);
 
