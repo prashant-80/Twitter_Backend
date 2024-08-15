@@ -9,8 +9,8 @@ async function createTweet(req,res){
         SuccessResponse.data = response;
         return res.status(StatusCodes.OK).json(SuccessResponse);
     } catch (error) {
-        console.log(error);
-        throw(error)
+        ErrorResponse.error = error;
+        return res.json(ErrorResponse);
     }
 }
 

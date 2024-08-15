@@ -17,7 +17,10 @@ const userSchema = new mongoose.Schema({
     },
     tweets:[{
         type:mongoose.Schema.ObjectId
-    }]
+    }],
+    name:{
+        type:String
+    }
 })
 
 userSchema.pre('save',function(next){
