@@ -8,9 +8,10 @@ async function toggleLike(modelId,modelType,userId){  //api/like/toggle?id = {tw
     if(modelType=='Tweet'){
          likeable = await tweetRepository.get(modelId);
     }else if(modelType == 'Comment'){
-        //complete this
+        likeable = await commentRepository.get(modelId); // Fetch the comment
     }else{
-        console.log('wrong model')
+        console.log('wrong model');
+        return;
     }
 
     const exists = await likeRepository.findByUserAndLikeable({
